@@ -1,21 +1,13 @@
 public class Solution {
     public void MoveZeroes(int[] nums) {
-        var zeroList = new List<int>();
-        var integerList = new List<int>();
-
-        foreach (int n in nums) {
-            if (n == 0)
-                zeroList.Add(n);
-            else
-                integerList.Add(n);
+        int insertPos = 0;
+        foreach (int num in nums) {
+            if (num != 0)
+                nums[insertPos++] = num;
         }
-
-        int i = 0;
-        foreach (int n in integerList)
-            nums[i++] = n;
-        foreach (int n in zeroList)
-            nums[i++] = n;
-
+        while (insertPos < nums.Length) {
+            nums[insertPos++] = 0;
+        }
         Console.WriteLine("[" + string.Join(", ", nums) + "]");
     }
 }
